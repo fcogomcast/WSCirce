@@ -1,0 +1,47 @@
+plugins {
+    id 'ear'
+    id 'java'
+    id 'war'
+}
+
+repositories {
+    jcenter()
+}
+
+// Configuraci�n de compilaci�n y ejecuci�n
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+// Configuraci�n espec�fica para el plugin 'ear'
+ear {
+    // Nombre del archivo EAR
+    archiveFileName = 'WSCirceEAR.ear'
+
+    // Agregar los archivos WAR al EAR
+    from('WSCirce/build/target') {
+        include '*.war'
+        into '/'
+    }
+    from('WSCirceExterno/build/target') {
+        include '*.war'
+        into '/'
+    }
+
+    from('WSCirceEAR/EarContent/META-INF') {
+        include '**.*' // Ajusta el patr�n seg�n tus necesidades
+        into ('META-INF')
+    }
+
+    // Agregar la carpeta APP-INF al EAR
+    into('APP-INF') {
+        from { file('WSCirceEAR/EarContent/APP-INF') }
+    }
+
+    // Estrategia de manejo de duplicados para application.xml
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE // O puedes usar otras estrategias seg�n tus necesidades
+}
+
+// Tarea predeterminada: compilar y empaquetar el EAR
+task buildEar(type: Ear)
+
+// Configuraci�n adicional si es necesaria

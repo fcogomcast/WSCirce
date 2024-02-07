@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://server.ws.stpa.com/" xmlns:tns="http://server.ws.stpa.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="doCirceImpuestoTrnsADJSolicitud" type="tns:doCirceImpuestoTrnsADJSolicitud"/>
+
+  <xs:element name="doCirceImpuestoTrnsADJSolicitudResponse" type="tns:doCirceImpuestoTrnsADJSolicitudResponse"/>
+
+  <xs:complexType name="doCirceImpuestoTrnsADJSolicitud">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:circeImpuestoTrnsADJSolicitud" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="circeImpuestoTrnsADJSolicitud">
+    <xs:sequence>
+      <xs:element name="SCirceSolicitud" type="xs:string" minOccurs="0"/>
+      <xs:element name="xml" type="tns:xml" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xml">
+    <xs:sequence>
+      <xs:element name="Fichero" type="tns:fichero" minOccurs="0"/>
+      <xs:element name="Firma_fichero" type="tns:firmaFichero" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fichero">
+    <xs:sequence>
+      <xs:element name="Identificacion" type="tns:identificacion" minOccurs="0"/>
+      <xs:element name="Elementos" type="tns:elementos" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="identificacion">
+    <xs:sequence>
+      <xs:element name="Tipo_Sociedad" type="xs:string" minOccurs="0"/>
+      <xs:element name="Id_comunicacion" type="xs:string" minOccurs="0"/>
+      <xs:element name="Id_tramite" type="xs:string" minOccurs="0"/>
+      <xs:element name="Descripcion" type="xs:string" minOccurs="0"/>
+      <xs:element name="Fecha" type="xs:string" minOccurs="0"/>
+      <xs:element name="Hora" type="xs:string" minOccurs="0"/>
+      <xs:element name="Acuse" type="xs:string" minOccurs="0"/>
+      <xs:element name="Sincronia" type="xs:string" minOccurs="0"/>
+      <xs:element name="Sistema_emisor" type="xs:string" minOccurs="0"/>
+      <xs:element name="Sistema_receptor" type="xs:string" minOccurs="0"/>
+      <xs:element name="Retorno" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="elementos">
+    <xs:sequence>
+      <xs:element name="Datos_interlocutores" type="tns:datosInterlocutores" minOccurs="0"/>
+      <xs:element name="Datos_STTCirce" type="tns:datosSTTCirce" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="datosInterlocutores">
+    <xs:sequence>
+      <xs:element name="Escritura" type="tns:escritura" minOccurs="0"/>
+      <xs:element name="Certificacion" type="tns:certificacion" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="escritura">
+    <xs:sequence>
+      <xs:element name="Origen" type="xs:string" minOccurs="0"/>
+      <xs:element name="Destinos" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Destino" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Formato" type="xs:string" minOccurs="0"/>
+      <xs:element name="Nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="Tamanyo" type="xs:string" minOccurs="0"/>
+      <xs:element name="Fecha" type="xs:string" minOccurs="0"/>
+      <xs:element name="Hora" type="xs:string" minOccurs="0"/>
+      <xs:element name="Contenido" type="tns:contenido" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="contenido">
+    <xs:sequence>
+      <xs:element name="Documento" type="xs:string" minOccurs="0"/>
+      <xs:element name="Firma" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="certificacion">
+    <xs:sequence>
+      <xs:element name="Origen" type="xs:string" minOccurs="0"/>
+      <xs:element name="Destinos" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Destino" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Formato" type="xs:string" minOccurs="0"/>
+      <xs:element name="Nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="Tamanyo" type="xs:string" minOccurs="0"/>
+      <xs:element name="Fecha" type="xs:string" minOccurs="0"/>
+      <xs:element name="Hora" type="xs:string" minOccurs="0"/>
+      <xs:element name="Contenido" type="xs:string" minOccurs="0"/>
+      <xs:element name="Firma" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="datosSTTCirce">
+    <xs:sequence>
+      <xs:element name="CABECERA" type="tns:cabecera" minOccurs="0"/>
+      <xs:element name="ID_NOTARIO" type="tns:idNotario" minOccurs="0"/>
+      <xs:element name="HECHO_IMPONIBLE" type="tns:hechoImponible" minOccurs="0"/>
+      <xs:element name="DATOS_NOTARIALES" type="tns:datosNotariales" minOccurs="0"/>
+      <xs:element name="INTERVINIENTES" type="tns:intervinientes" minOccurs="0"/>
+      <xs:element name="DATOS_LIQUIDCION" type="tns:datosLiquidacion" minOccurs="0"/>
+      <xs:element name="CALCULO" type="tns:calculo" minOccurs="0"/>
+      <xs:element name="SUJETO" type="tns:sujeto" minOccurs="0"/>
+      <xs:element name="PAGO" type="tns:pago" minOccurs="0"/>
+      <xs:element name="RESULTADO" type="tns:resultado" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cabecera">
+    <xs:sequence>
+      <xs:element name="APLICACION" type="xs:string" minOccurs="0"/>
+      <xs:element name="ID_PAIT" type="xs:string" minOccurs="0"/>
+      <xs:element name="COMPONENTE" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="idNotario">
+    <xs:sequence>
+      <xs:element name="NIF_NOTARIO" type="xs:string" minOccurs="0"/>
+      <xs:element name="CODIGO_NOTARIO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOMBRE" type="xs:string" minOccurs="0"/>
+      <xs:element name="APELLIDOS" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOMBRE_COMPLETO" type="xs:string" minOccurs="0"/>
+      <xs:element name="LOCALIDAD" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="hechoImponible">
+    <xs:sequence>
+      <xs:element name="MODALIDAD" type="xs:string" minOccurs="0"/>
+      <xs:element name="ANEXO" type="xs:string" minOccurs="0"/>
+      <xs:element name="FECHA_PRESENTACION" type="xs:string" minOccurs="0"/>
+      <xs:element name="FECHA_DEVENGO" type="xs:string" minOccurs="0"/>
+      <xs:element name="EXPRESION_ABREVIADA" type="xs:string" minOccurs="0"/>
+      <xs:element name="CONCEPTO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NUM_CERTIFICADO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NUM_ITPAJD" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="datosNotariales">
+    <xs:sequence>
+      <xs:element name="TIPO_DOCUMENTO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NUMERO_PROTOCOLO" type="xs:string" minOccurs="0"/>
+      <xs:element name="ANYO_PROTOCOLO" type="xs:string" minOccurs="0"/>
+      <xs:element name="OBSERVACIONES" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOMBRE_COMPLETO" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="intervinientes">
+    <xs:sequence>
+      <xs:element name="NUM_PAS" type="xs:string" minOccurs="0"/>
+      <xs:element name="SUJETO_PASIVO" type="tns:sujetoPasivo" minOccurs="0"/>
+      <xs:element name="SUJETO_PRESENTADOR" type="tns:sujetoPresentador" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sujetoPasivo">
+    <xs:sequence>
+      <xs:element name="PRIMER_APELLIDO" type="xs:string" minOccurs="0"/>
+      <xs:element name="SEGUNDO_APELLIDO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOMBRE" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOMBRE_COMPLETO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NIF" type="xs:string" minOccurs="0"/>
+      <xs:element name="EMAIL" type="xs:string" minOccurs="0"/>
+      <xs:element name="TELEFONO" type="xs:string" minOccurs="0"/>
+      <xs:element name="FAX" type="xs:string" minOccurs="0"/>
+      <xs:element name="TIPO_VIA" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOMBRE_VIA" type="xs:string" minOccurs="0"/>
+      <xs:element name="NUMERO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NUMERO_LOCAL" type="xs:string" minOccurs="0"/>
+      <xs:element name="ESCALERA" type="xs:string" minOccurs="0"/>
+      <xs:element name="PLANTA" type="xs:string" minOccurs="0"/>
+      <xs:element name="PUERTA" type="xs:string" minOccurs="0"/>
+      <xs:element name="BLOQUE" type="xs:string" minOccurs="0"/>
+      <xs:element name="DUPLICADO" type="xs:string" minOccurs="0"/>
+      <xs:element name="PORTAL_BLOQUE" type="xs:string" minOccurs="0"/>
+      <xs:element name="PUERTA_GENERICA" type="xs:string" minOccurs="0"/>
+      <xs:element name="PUERTA_ESPECIFICA" type="xs:string" minOccurs="0"/>
+      <xs:element name="KILOMETRO" type="xs:string" minOccurs="0"/>
+      <xs:element name="CODIGO_POSTAL" type="xs:string" minOccurs="0"/>
+      <xs:element name="MUNICIPIO" type="tns:municipio" minOccurs="0"/>
+      <xs:element name="PROVINCIA" type="tns:provincia" minOccurs="0"/>
+      <xs:element name="PAIS" type="tns:pais" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="municipio">
+    <xs:sequence>
+      <xs:element name="CODIGO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOMBRE" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="provincia">
+    <xs:sequence>
+      <xs:element name="CODIGO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOMBRE" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pais">
+    <xs:sequence>
+      <xs:element name="CODIGO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOMBRE" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sujetoPresentador">
+    <xs:sequence>
+      <xs:element name="PRIMER_APELLIDO" type="xs:string" minOccurs="0"/>
+      <xs:element name="SEGUNDO_APELLIDO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOMBRE" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOMBRE_COMPLETO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NIF" type="xs:string" minOccurs="0"/>
+      <xs:element name="EMAIL" type="xs:string" minOccurs="0"/>
+      <xs:element name="TELEFONO" type="xs:string" minOccurs="0"/>
+      <xs:element name="FAX" type="xs:string" minOccurs="0"/>
+      <xs:element name="TIPO_VIA" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOMBRE_VIA" type="xs:string" minOccurs="0"/>
+      <xs:element name="NUMERO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NUMERO_LOCAL" type="xs:string" minOccurs="0"/>
+      <xs:element name="ESCALERA" type="xs:string" minOccurs="0"/>
+      <xs:element name="PLANTA" type="xs:string" minOccurs="0"/>
+      <xs:element name="PUERTA" type="xs:string" minOccurs="0"/>
+      <xs:element name="BLOQUE" type="xs:string" minOccurs="0"/>
+      <xs:element name="DUPLICADO" type="xs:string" minOccurs="0"/>
+      <xs:element name="PORTAL_BLOQUE" type="xs:string" minOccurs="0"/>
+      <xs:element name="PUERTA_GENERICA" type="xs:string" minOccurs="0"/>
+      <xs:element name="PUERTA_ESPECIFICA" type="xs:string" minOccurs="0"/>
+      <xs:element name="KILOMETRO" type="xs:string" minOccurs="0"/>
+      <xs:element name="CODIGO_POSTAL" type="xs:string" minOccurs="0"/>
+      <xs:element name="MUNICIPIO" type="tns:municipio" minOccurs="0"/>
+      <xs:element name="PROVINCIA" type="tns:provincia" minOccurs="0"/>
+      <xs:element name="PAIS" type="tns:pais" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="datosLiquidacion">
+    <xs:sequence>
+      <xs:element name="VALORES" type="tns:valores" minOccurs="0"/>
+      <xs:element name="EXENCIONES" type="tns:exenciones" minOccurs="0"/>
+      <xs:element name="COMPLEMENTARIA" type="tns:complementaria" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="valores">
+    <xs:sequence>
+      <xs:element name="VALOR_DECLARADO" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="exenciones">
+    <xs:sequence>
+      <xs:element name="TIPO_EXENCION" type="xs:string" minOccurs="0"/>
+      <xs:element name="EXENTO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NO_SUJETO" type="xs:string" minOccurs="0"/>
+      <xs:element name="FUNDAMENTO" type="xs:string" minOccurs="0"/>
+      <xs:element name="CLAVE" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="complementaria">
+    <xs:sequence>
+      <xs:element name="COMPLEMENTARIA" type="xs:string" minOccurs="0"/>
+      <xs:element name="NUMERO_PRESENTACION" type="xs:string" minOccurs="0"/>
+      <xs:element name="FECHA_PRESENTACION" type="xs:string" minOccurs="0"/>
+      <xs:element name="NUMERO_JUSTIFICANTE" type="xs:string" minOccurs="0"/>
+      <xs:element name="IMPORTE_INGRESADO" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="calculo">
+    <xs:sequence>
+      <xs:element name="VALORES" type="tns:valores" minOccurs="0"/>
+      <xs:element name="BASE_IMPONIBLE" type="xs:string" minOccurs="0"/>
+      <xs:element name="REDUCCION" type="tns:reduccion" minOccurs="0"/>
+      <xs:element name="BASE_LIQUIDABLE" type="xs:string" minOccurs="0"/>
+      <xs:element name="TIPO_IMPOSITIVO" type="tns:tipoImpositivo" minOccurs="0"/>
+      <xs:element name="CUOTA" type="xs:string" minOccurs="0"/>
+      <xs:element name="BONIFICACION" type="tns:bonificacion" minOccurs="0"/>
+      <xs:element name="IMPORTE_INGRESAR" type="xs:string" minOccurs="0"/>
+      <xs:element name="RECARGOR" type="xs:string" minOccurs="0"/>
+      <xs:element name="INTERESES" type="xs:string" minOccurs="0"/>
+      <xs:element name="TOTAL_INGRESAR" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reduccion">
+    <xs:sequence>
+      <xs:element name="importe" type="xs:string" minOccurs="0"/>
+      <xs:element name="porcentaje" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoImpositivo">
+    <xs:sequence>
+      <xs:element name="PORCENTAJE" type="xs:string" minOccurs="0"/>
+      <xs:element name="IMPORTE" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bonificacion">
+    <xs:sequence>
+      <xs:element name="PORCENTAJE" type="xs:string" minOccurs="0"/>
+      <xs:element name="IMPORTE" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sujeto">
+    <xs:sequence>
+      <xs:element name="NOMBRE_COMPLETO" type="xs:string" minOccurs="0"/>
+      <xs:element name="NIF" type="xs:string" minOccurs="0"/>
+      <xs:element name="TIPO_VIA" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOMBRE_VIA" type="xs:string" minOccurs="0"/>
+      <xs:element name="NUMERO" type="xs:string" minOccurs="0"/>
+      <xs:element name="ESCALERA" type="xs:string" minOccurs="0"/>
+      <xs:element name="PLANTA" type="xs:string" minOccurs="0"/>
+      <xs:element name="PUERTA" type="xs:string" minOccurs="0"/>
+      <xs:element name="DUPLICADO" type="xs:string" minOccurs="0"/>
+      <xs:element name="CODIGO_POSTAL" type="xs:string" minOccurs="0"/>
+      <xs:element name="MUNICIPIO" type="tns:municipio" minOccurs="0"/>
+      <xs:element name="PROVINCIA" type="tns:provincia" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pago">
+    <xs:sequence>
+      <xs:element name="TIPO_CONFIRMACION" type="xs:string" minOccurs="0"/>
+      <xs:element name="DATOS_PAGO" type="tns:datosPago" minOccurs="0"/>
+      <xs:element name="FECHA_INGRESO" type="xs:string" minOccurs="0"/>
+      <xs:element name="INGRESO_IMPORTE" type="xs:string" minOccurs="0"/>
+      <xs:element name="CODIGO_PAGO" type="xs:string" minOccurs="0"/>
+      <xs:element name="TEXTO_PAGO" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="datosPago">
+    <xs:sequence>
+      <xs:element name="ENTIDAD" type="xs:string" minOccurs="0"/>
+      <xs:element name="OFICINA" type="xs:string" minOccurs="0"/>
+      <xs:element name="CONTROL" type="xs:string" minOccurs="0"/>
+      <xs:element name="CUENTA" type="xs:string" minOccurs="0"/>
+      <xs:element name="NIF_TITULAR" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOMBRE_COMPLETO_TITULAR" type="xs:string" minOccurs="0"/>
+      <xs:element name="BANCO_SUCURSAL" type="xs:string" minOccurs="0"/>
+      <xs:element name="FECHA_INGRESO" type="xs:string" minOccurs="0"/>
+      <xs:element name="INGRESO_IMPORTE" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultado">
+    <xs:sequence>
+      <xs:element name="RETURNCODE" type="xs:string" minOccurs="0"/>
+      <xs:element name="ERRORES" type="tns:errores" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="errores">
+    <xs:sequence>
+      <xs:element name="CODERROR" type="xs:string" minOccurs="0"/>
+      <xs:element name="TEXTERROR" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="firmaFichero">
+    <xs:sequence>
+      <xs:element name="firma" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doCirceImpuestoTrnsADJSolicitudResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:circeImpuestoTrnsADJRespuesta" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="circeImpuestoTrnsADJRespuesta">
+    <xs:sequence>
+      <xs:element name="SCirceRespuesta" type="xs:string" minOccurs="0"/>
+      <xs:element name="xml" type="tns:xml" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

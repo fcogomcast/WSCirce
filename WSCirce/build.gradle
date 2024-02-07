@@ -1,0 +1,73 @@
+plugins {
+    id 'war'
+    id 'java'
+}
+
+repositories {
+    jcenter()
+}
+
+// Configuración de compilación y ejecución
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+// Dependencias del proyecto
+dependencies {
+    // Añade las dependencias que necesites desde la carpeta 'webcontent/lib'
+    implementation fileTree(dir: 'webcontent/WEB-INF/lib', include: ['*.jar'])
+    //implementation fileTree(dir: 'webcontent/WEB-INF', include: ['*.xml'])
+    implementation 'javax.servlet:javax.servlet-api:3.1.0'
+    // Añade otras dependencias aquí
+}
+// Ruta de las clases Java a compilar
+sourceSets {
+    main {
+        java {
+            srcDirs 'src'
+        }
+    }
+}
+
+// Tareas de compilación y empaquetado
+tasks.withType(JavaCompile) {
+    options.encoding = 'Cp1252'
+}
+
+// Configuración específica para el plugin 'war'
+war {
+    archiveFileName = "$buildDir/target/WSCirce.war" // Cambia esto por el nombre que desees para tu archivo WAR
+
+    from('wsdl') {
+        include '**/*.wsdl'
+        into 'WEB-INF/classes'
+    }
+
+    from('src/com/stpa/ws/server') {
+        include '**/*.xml'
+        into 'WEB-INF/classes/com/stpa/ws/server'
+    }
+
+    //Agrega archivo commons-logging.properties
+    from('webcontent/WEB-INF/classes') {
+        include '**/*.properties'
+        into 'WEB-INF/classes'
+    }
+
+    // Agrega carpeta configuracion del src
+    from('src/com/stpa/ws/server/configuracion') {
+        into 'WEB-INF/classes/com/stpa/ws/server/configuracion'
+    }
+
+    // Agrega carpeta jaxws del src
+    from('WebContent/WEB-INF/jaxws') {
+        into 'WEB-INF/classes/com/stpa/ws/server/jaxws'
+    }
+
+    // Agrega solo los archivos XML de la carpeta WEB-INF
+    webInf {
+        from 'webcontent/WEB-INF', {
+            include '*.xml'
+        }
+    }
+}
+
